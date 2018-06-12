@@ -1,2 +1,2 @@
-# examplebot
+# DiscordJs Example Bot
 A DiscordJs Example Bot to help you create Discord Bots!
