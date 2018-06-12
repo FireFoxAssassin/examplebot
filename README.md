@@ -1,6 +1,14 @@
 # DiscordJs Example Bot
 A DiscordJs Example Bot to help you create Discord Bots!
 
+## Directory Information
+There are two directories for the bots:
+- Single File
+- Cmd Handler (Work In Progress)
+
+The "Single File" bot is pretty self-explanatory. It's a bot that runs on one file. Recommended for beginners to programming or specifically to bot making.
+The "Cmd Handler" bot is more complex. It's a bot that has it's commands separated into different files. Recommended for more experienced programmers.
+
 ## Help
 **How do I make a bot avatar/How do I get my Token?**
 
