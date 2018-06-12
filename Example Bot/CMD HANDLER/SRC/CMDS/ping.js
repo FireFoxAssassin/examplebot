@@ -17,8 +17,8 @@ const fs = require("fs");
 module.exports.run = async (client, message, args) => {
 
 	/* "message.channel.send" sends a message to the channel where
-		the command was sent from.
-		":ping_pong:" is an emoji. Emojis are usable in messages. 
+	    the command was sent from.
+	    ":ping_pong:" is an emoji. Emojis are usable in messages. 
 	*/
 	message.channel.send(":ping_pong: Ping!!!!");
 }
