@@ -18,6 +18,11 @@ const Discord = require(`discord.js`);
 */
 const client = new Discord.Client();
 
+/*
+	Makes a Discord Collection, which will be useful for the Command Handler later on. 
+*/
+client.cmds = new Discord.Collection();
+
 /* Makes an identifible link between your Bot's avatar and the code here.
    In order for this to connect, change "TOKENHERE" to the token of your bot. If you are unsure on how to
    get your token. Read the "README" file. 
@@ -27,8 +32,21 @@ client.login(`TOKENHERE`);
 /* Creates a Prefix for our bot. This is easily customisable, so you can change it to what ever you like.
    A prefix is the characters that make commands easier to pick out and use. E.g "e!help".
 */
-var prefix = "e!";
 
+/* In this we are requiring a JSON file (JavaScript Object Notation). Put simply, JSON files help
+   to store information.
+*/ 
+const bs = require("./JSON/botsettings.json");
+
+/* If you have taken a look in "botsettings.json", you will see that there 
+   is a '"prefix": "ei"'. In simplist terms, the prefix is stored as information in the JSON.
+   If you want to "get" the piece of information. You would need to do something like:
+*/
+var prefix = bs.prefix;
+
+// We will require a different module, that doesn't needed to be downloaded in your "node_modulus".
+// This will be important later.
+const fs = require("fs");
 
 // Now lets start get some practical things done.
 
@@ -90,6 +108,32 @@ client.on("guildDelete", (guild) => {
 	console.log(`I recently left ${guild.name} (${guild.id})!`);
 };
 
+/*
+  This is where the "fs" module is used.
+  "Readdir" is the shortened version of "Read Directory".
+  This will look complicated for new programmers, so i'll summarise within
+  20 words:
+  Reads the "CMDS" file and gets each .js files name and stores them in a list (collection).
+*/
+fs.readdir("./CMDS/", (err, files) => {
+
+	// It's good practise to "throw" (see what I did there?) one of these in your code.
+	// If an error happens, it will display the error in the console. 
+	if (err) throw (err);
+
+	// Searches for the files that ends with ".js".
+	let jsf = files.filter(f => f.split(".").pop() === "js");
+
+	// Checks if there are no .js files in "CMDS".
+	if (jsf.length == 0) return;
+
+	// Sets the Collection with the names of the .js files in "CMDS".
+	jsf.forEach((f, i) => {
+		let props = require(`./CMDS/${f}`);
+		client.cmds.set(props.help.name, props);
+	});
+});
+
 /* This will activate when a person sends a message.
    Note that some people like to use "msg" instead of "message" for the arrow function.
    Either are fine, just remember to change each instance of "message" with "msg".
@@ -109,21 +153,20 @@ client.on(`message`, message => {
 	/* Now we want the commands and the args (arguments) to fully implement commands.
 	   For example, a command may be "e!diceroll" and an argument would be "6", giving
 	   us "e!diceroll 6".
+	   For the next three lines of code, I will use this example to show what it will look
+	   like.
 	*/
-	const args = message.content.slice(prefix.length).split(" ");
-	const cmd = args[0].toLowerCase();
+	// This will be displayed as: ["e!diceroll", "6"].
+	let msg = message.content.split(" ");
 
-	// Now that is out of the way, we can start making commands!
-	// A first generic one is the "ping" command.
+	// This will be displayed as: "e!diceroll".
+    let cmd = msg[0].toLowerCase();
 
-	// "==" due to being a comparative operator, do not mix up "=" with "==".
-	if (cmd == "ping") {
+    // And finally, this will be displayed as: "6".
+    let args = msg.slice(1);
 
-		/* "message.channel.send" sends a message to the channel where
-			the command was sent from.
-		   ":ping_pong:" is an emoji. Emojis are usable in messages. 
-		*/
-		message.channel.send(":ping_pong: Ping!!!!");
-	};
+    // This checks if the command exists and will execute it if it does.
+    cmdf = client.cmds.get(cmd.slice(prefix.length));
+    if (cmdf) cmdf.run(client, message, args);
 
 });

@@ -1,0 +1,15 @@
+{
+	"name": "Example Bot",
+	"version": "0.0.0",
+	"description": "An Example Bot to increase your skill in creating bots!",
+	"main": "SRC/index.js",
+	"scripts": {
+		"start": "node SRC/index.js",
+		"patch": "npm version patch"
+	},
+	"author": "FireFoxAssassin",
+	"license": "MIT",
+	"dependencies": {
+		"discord.js": "^11.3.0"
+	}
+}
