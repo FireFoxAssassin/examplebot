@@ -25,7 +25,7 @@ const client = new Discord.Client();
 client.login(`TOKENHERE`);
 
 /* Creates a Prefix for our bot. This is easily customisable, so you can change it to what ever you like.
-   A prefix is the characters that make commands easier to pick out and use. E.g "e!help".
+   A prefix are the characters that make commands easier to pick out and use. E.g "e!help".
 */
 var prefix = "e!";
 
