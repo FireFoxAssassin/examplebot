@@ -18,9 +18,8 @@ const Discord = require(`discord.js`);
 */
 const client = new Discord.Client();
 
-/*
-	Makes a Discord Collection, which will be useful for the Command Handler later on. 
-*/
+
+//Makes a Discord Collection, which will be useful for the Command Handler later on. 
 client.cmds = new Discord.Collection();
 
 /* Makes an identifible link between your Bot's avatar and the code here.
@@ -28,10 +27,6 @@ client.cmds = new Discord.Collection();
    get your token. Read the "README" file. 
 */
 client.login(`TOKENHERE`);
-
-/* Creates a Prefix for our bot. This is easily customisable, so you can change it to what ever you like.
-   A prefix is the characters that make commands easier to pick out and use. E.g "e!help".
-*/
 
 /* In this we are requiring a JSON file (JavaScript Object Notation). Put simply, JSON files help
    to store information.
