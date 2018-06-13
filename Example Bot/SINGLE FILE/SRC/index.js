@@ -25,7 +25,7 @@ const client = new Discord.Client();
 client.login(`TOKENHERE`);
 
 /* Creates a Prefix for our bot. This is easily customisable, so you can change it to what ever you like.
-   A prefix are the characters that make commands easier to pick out and use. E.g "e!help".
+   A prefix is the characters that make commands easier to pick out and use. E.g "e!help".
 */
 var prefix = "e!";
 
@@ -126,4 +126,37 @@ client.on(`message`, message => {
 		message.channel.send(":ping_pong: Ping!!!!");
 	};
 
+	// Now how about a help command? But we want it to be easy to make and make it look nice.
+	// This is where we will be using "Embeds".
+
+	// I suggest creating an array for your commands, so you don't have to list out each one.
+	let cmds = ["Ping", "Help"];
+
+	if (cmd == "help") {
+
+		// Creates an instance of an embed.
+		embed = new Discord.RichEmbed();
+
+		// Sets the color of the embed, and it can only be hexadecimal strings. E.g #ff0000 gives red.
+		// Remember to use the correct spelling for "color" ("colour" doesn't work).
+		embed.setColor("#ff0000");
+
+		// Sets the author of the embed. We'll make it the person that sent the message.
+		embed.setAuthor(message.author.username);
+
+		// Sets the description of the embed.
+		embed.setDescription("The Help Menu!");
+
+		// Sets the thumbnail (the image top-right of the embed).
+		// We'll set this to the sender's avatar.
+		embed.setThumbnail(message.author.avatarURL);
+
+		/* Adds a new field to the Embed. "Fields" are essentially new lines with two parts to them.
+		  "Commands" is the "header" of the field, and the second part is the array joined as a list. 
+		*/
+		embed.addField("Commands", cmds.join("\n"));
+
+		// Finally, we need to send the embed.
+		message.channel.send({embed: embed});
+	}
 });
