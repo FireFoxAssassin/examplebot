@@ -86,7 +86,7 @@ client.on(`guildMemberRemove`, (member) => {
 	member.send(`Bye Bye ${member}!`);
 });
 
- // This will activate when the bot joins the server.
+ // This will activate when the bot joins the guild.
 client.on("guildCreate", (guild) => {
 
 	/* Sends to the console a message.
@@ -94,14 +94,14 @@ client.on("guildCreate", (guild) => {
 	   the ID of the server.
 	*/
 	console.log(`I recently joined ${guild.name} (${guild.id})!`);
-};
+});
 
-// This will activate when the bot leaves the server.
+// This will activate when the bot leaves the guild.
 client.on("guildDelete", (guild) => {
 
 	//Same principle with "guildCreate".
 	console.log(`I recently left ${guild.name} (${guild.id})!`);
-};
+});
 
 /*
   This is where the "fs" module is used.
@@ -152,10 +152,10 @@ client.on(`message`, message => {
 	   like.
 	*/
 	
-    // This will be displayed as: ["e!diceroll", "6"].
-    let msg = message.content.split(" ");
+	// This will be displayed as: ["e!diceroll", "6"].
+	let msg = message.content.split(" ");
 
-    // This will be displayed as: "e!diceroll".
+	// This will be displayed as: "e!diceroll".
     let cmd = msg[0].toLowerCase();
 
     // And finally, this will be displayed as: "6".

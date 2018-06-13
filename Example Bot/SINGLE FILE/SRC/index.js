@@ -81,14 +81,14 @@ client.on("guildCreate", (guild) => {
 	   the ID of the server.
 	*/
 	console.log(`I recently joined ${guild.name} (${guild.id})!`);
-};
+});
 
 // This will activate when the bot leaves the guild.
 client.on("guildDelete", (guild) => {
 
 	//Same principle with "guildCreate".
 	console.log(`I recently left ${guild.name} (${guild.id})!`);
-};
+});
 
 /* This will activate when a person sends a message.
    Note that some people like to use "msg" instead of "message" for the arrow function.
