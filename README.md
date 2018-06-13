@@ -2,7 +2,7 @@
 A DiscordJs Example Bot to help you create Discord Bots!
 
 ## Directory Information
-There are two directories for the bots:
+There are two directories for the bot:
 - Single File
 - Cmd Handler
 
