@@ -86,7 +86,7 @@ client.on(`guildMemberRemove`, (member) => {
 	member.send(`Bye Bye ${member}!`);
 });
 
- // This will activate when the bot joins the guild.
+ // This will activate when the bot joins the server.
 client.on("guildCreate", (guild) => {
 
 	/* Sends to the console a message.
@@ -96,7 +96,7 @@ client.on("guildCreate", (guild) => {
 	console.log(`I recently joined ${guild.name} (${guild.id})!`);
 };
 
-// This will activate when the bot leaves the guild.
+// This will activate when the bot leaves the server.
 client.on("guildDelete", (guild) => {
 
 	//Same principle with "guildCreate".
@@ -151,10 +151,11 @@ client.on(`message`, message => {
 	   For the next three lines of code, I will use this example to show what it will look
 	   like.
 	*/
-	// This will be displayed as: ["e!diceroll", "6"].
-	let msg = message.content.split(" ");
+	
+    // This will be displayed as: ["e!diceroll", "6"].
+    let msg = message.content.split(" ");
 
-	// This will be displayed as: "e!diceroll".
+    // This will be displayed as: "e!diceroll".
     let cmd = msg[0].toLowerCase();
 
     // And finally, this will be displayed as: "6".
