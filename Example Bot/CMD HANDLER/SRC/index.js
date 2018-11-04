@@ -108,7 +108,7 @@ client.on("guildDelete", (guild) => {
   "Readdir" is the shortened version of "Read Directory".
   This will look complicated for new programmers, so i'll summarise within
   20 words:
-  Reads the "CMDS" file and gets each .js files name and stores them in a list (collection).
+  Reads the "CMDS" folder and gets each .js files name and stores them in a list (collection).
 */
 fs.readdir("./CMDS/", (err, files) => {
 
