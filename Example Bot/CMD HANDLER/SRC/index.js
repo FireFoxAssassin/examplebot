@@ -34,7 +34,7 @@ client.login(`TOKENHERE`);
 const bs = require("./JSON/botsettings.json");
 
 /* If you have taken a look in "botsettings.json", you will see that there 
-   is a '"prefix": "ei"'. In simplist terms, the prefix is stored as information in the JSON.
+   is a '"prefix": "e!"'. In simplist terms, the prefix is stored as information in the JSON.
    If you want to "get" the piece of information. You would need to do something like:
 */
 var prefix = bs.prefix;
